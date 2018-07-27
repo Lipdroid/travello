@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		7418FE1821098B49005E060E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418FE1721098B49005E060E /* AppDelegate.swift */; };
-		7418FE1A21098B49005E060E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418FE1921098B49005E060E /* ViewController.swift */; };
+		7418FE1A21098B49005E060E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418FE1921098B49005E060E /* LoginVC.swift */; };
 		7418FE1D21098B49005E060E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7418FE1B21098B49005E060E /* Main.storyboard */; };
 		7418FE1F21098B49005E060E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7418FE1E21098B49005E060E /* Assets.xcassets */; };
 		7418FE2221098B49005E060E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7418FE2021098B49005E060E /* LaunchScreen.storyboard */; };
+		74551327210AD1A700BFF566 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74551326210AD1A700BFF566 /* Constants.swift */; };
+		7455132A210AD60100BFF566 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74551329210AD60100BFF566 /* Modal.swift */; };
+		7455132D210AD6D800BFF566 /* TermsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7455132C210AD6D800BFF566 /* TermsAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7418FE1421098B49005E060E /* Travello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7418FE1721098B49005E060E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7418FE1921098B49005E060E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7418FE1921098B49005E060E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		7418FE1C21098B49005E060E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7418FE1E21098B49005E060E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7418FE2121098B49005E060E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7418FE2321098B49005E060E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74551326210AD1A700BFF566 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		74551329210AD60100BFF566 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
+		7455132C210AD6D800BFF566 /* TermsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,73 @@
 		7418FE1621098B49005E060E /* Travello */ = {
 			isa = PBXGroup;
 			children = (
-				7418FE1721098B49005E060E /* AppDelegate.swift */,
-				7418FE1921098B49005E060E /* ViewController.swift */,
-				7418FE1B21098B49005E060E /* Main.storyboard */,
-				7418FE1E21098B49005E060E /* Assets.xcassets */,
-				7418FE2021098B49005E060E /* LaunchScreen.storyboard */,
-				7418FE2321098B49005E060E /* Info.plist */,
+				74551328210AD5E800BFF566 /* Protocol&Extensions */,
+				7418FE2D21099028005E060E /* Constants */,
+				7418FE2C21098E89005E060E /* Resources */,
+				7418FE2B21098E81005E060E /* Controllers */,
+				7418FE2A21098E79005E060E /* Views */,
+				7418FE2921098E6D005E060E /* Models */,
 			);
 			path = Travello;
+			sourceTree = "<group>";
+		};
+		7418FE2921098E6D005E060E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7418FE2A21098E79005E060E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7455132B210AD6C700BFF566 /* CustomViews */,
+				7418FE1B21098B49005E060E /* Main.storyboard */,
+				7418FE2021098B49005E060E /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7418FE2B21098E81005E060E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7418FE1721098B49005E060E /* AppDelegate.swift */,
+				7418FE1921098B49005E060E /* LoginVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7418FE2C21098E89005E060E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7418FE2321098B49005E060E /* Info.plist */,
+				7418FE1E21098B49005E060E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7418FE2D21099028005E060E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				74551326210AD1A700BFF566 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		74551328210AD5E800BFF566 /* Protocol&Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				74551329210AD60100BFF566 /* Modal.swift */,
+			);
+			path = "Protocol&Extensions";
+			sourceTree = "<group>";
+		};
+		7455132B210AD6C700BFF566 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				7455132C210AD6D800BFF566 /* TermsAlertView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +201,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7418FE1A21098B49005E060E /* ViewController.swift in Sources */,
+				7455132D210AD6D800BFF566 /* TermsAlertView.swift in Sources */,
+				7418FE1A21098B49005E060E /* LoginVC.swift in Sources */,
 				7418FE1821098B49005E060E /* AppDelegate.swift in Sources */,
+				74551327210AD1A700BFF566 /* Constants.swift in Sources */,
+				7455132A210AD60100BFF566 /* Modal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,13 +343,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7V27CSMYF8;
-				INFOPLIST_FILE = Travello/Info.plist;
+				DEVELOPMENT_TEAM = 7A9JA8PNZH;
+				INFOPLIST_FILE = "$(SRCROOT)/Travello/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Lipdroid.Travello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -290,13 +358,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7V27CSMYF8;
-				INFOPLIST_FILE = Travello/Info.plist;
+				DEVELOPMENT_TEAM = 7A9JA8PNZH;
+				INFOPLIST_FILE = "$(SRCROOT)/Travello/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Lipdroid.Travello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

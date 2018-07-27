@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        //show a dialog pop up
+        let alert = TermsAlertView()
+        alert.show(animated: true)
+    
     }
 
     override func didReceiveMemoryWarning() {

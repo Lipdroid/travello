@@ -16,6 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //get the current app version
+        if let version = Bundle.main.infoDictionary?["CFBundleVersion"]  as? String{
+            //Check if version value set in userDefaults
+            if let prev_version = UserDefaults.standard.object(forKey: Constants.VERSION) as? String{
+                if version == prev_version{
+                    //go to app
+                }else{
+                    //show a dialog pop up
+                    //save the version in userDefaults
+                    UserDefaults.standard.set(version, forKey: Constants.VERSION)
+                }
+            }else{
+                //save the version in userDefaults
+                UserDefaults.standard.set(version, forKey: Constants.VERSION)
+            }
+            
+        }
         return true
     }
 
