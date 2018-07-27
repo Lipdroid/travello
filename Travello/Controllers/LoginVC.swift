@@ -13,9 +13,26 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //show a dialog pop up
-        let alert = TermsAlertView()
-        alert.show(animated: true)
+        //get the current app version
+        //if current version is equal with prev version then do nothing
+        //else show terms pop up
+        if let version = Bundle.main.infoDictionary?["CFBundleVersion"]  as? String{
+            //Check if version value set in userDefaults
+            if let prev_version = UserDefaults.standard.object(forKey: Constants.VERSION) as? String{
+                if version == prev_version{
+                    //go to app
+                }else{
+                    //show a dialog pop up
+                    let alert = TermsAlertView()
+                    alert.show(animated: true)
+                }
+            }else{
+                //show a dialog pop up
+                let alert = TermsAlertView()
+                alert.show(animated: true)
+            }
+        }
+        
     
     }
 

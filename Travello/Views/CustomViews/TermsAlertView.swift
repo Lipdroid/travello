@@ -125,6 +125,11 @@ class TermsAlertView: UIView, Modal {
     
     @objc func onAgree(){
         dismiss(animated: true)
+        if let version = Bundle.main.infoDictionary?["CFBundleVersion"]  as? String{
+            //save the version in userDefaults
+            UserDefaults.standard.set(version, forKey: Constants.VERSION)
+        }
+        
     }
     
     func attributedText(value: String) -> NSAttributedString {
