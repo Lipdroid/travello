@@ -1,0 +1,6 @@
+framework module Pods_Travello {
+  umbrella header "Pods-Travello-umbrella.h"
+
+  export *
+  module * { export * }
+}

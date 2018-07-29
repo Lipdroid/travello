@@ -15,9 +15,11 @@
 		74551327210AD1A700BFF566 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74551326210AD1A700BFF566 /* Constants.swift */; };
 		7455132A210AD60100BFF566 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74551329210AD60100BFF566 /* Modal.swift */; };
 		7455132D210AD6D800BFF566 /* TermsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7455132C210AD6D800BFF566 /* TermsAlertView.swift */; };
+		C9090D87CE9219776144E301 /* Pods_Travello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC8611E91899758BF1C3E26 /* Pods_Travello.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CC8611E91899758BF1C3E26 /* Pods_Travello.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travello.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7418FE1421098B49005E060E /* Travello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7418FE1721098B49005E060E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7418FE1921098B49005E060E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		74551326210AD1A700BFF566 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		74551329210AD60100BFF566 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		7455132C210AD6D800BFF566 /* TermsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAlertView.swift; sourceTree = "<group>"; };
+		C8317506B7886309BA539118 /* Pods-Travello.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travello.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Travello/Pods-Travello.debug.xcconfig"; sourceTree = "<group>"; };
+		CB798C63239E6E7B4BA9B8E6 /* Pods-Travello.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travello.release.xcconfig"; path = "Pods/Target Support Files/Pods-Travello/Pods-Travello.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9090D87CE9219776144E301 /* Pods_Travello.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68315C525E6CC9E75F4A37F4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C8317506B7886309BA539118 /* Pods-Travello.debug.xcconfig */,
+				CB798C63239E6E7B4BA9B8E6 /* Pods-Travello.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7418FE0B21098B49005E060E = {
 			isa = PBXGroup;
 			children = (
 				7418FE1621098B49005E060E /* Travello */,
 				7418FE1521098B49005E060E /* Products */,
+				68315C525E6CC9E75F4A37F4 /* Pods */,
+				916C6CDAE8262DD502311945 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +145,14 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		916C6CDAE8262DD502311945 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CC8611E91899758BF1C3E26 /* Pods_Travello.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,9 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7418FE2621098B49005E060E /* Build configuration list for PBXNativeTarget "Travello" */;
 			buildPhases = (
+				8801E1A5B1FDC6609D6C140D /* [CP] Check Pods Manifest.lock */,
 				7418FE1021098B49005E060E /* Sources */,
 				7418FE1121098B49005E060E /* Frameworks */,
 				7418FE1221098B49005E060E /* Resources */,
+				6E66904BC3AFBB28E2BDD13C /* [CP] Embed Pods Frameworks */,
+				A54DB004A7C76C5FC665F90F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,6 +222,73 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E66904BC3AFBB28E2BDD13C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Travello/Pods-Travello-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Travello/Pods-Travello-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8801E1A5B1FDC6609D6C140D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Travello-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A54DB004A7C76C5FC665F90F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Travello/Pods-Travello-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Travello/Pods-Travello-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7418FE1021098B49005E060E /* Sources */ = {
@@ -340,6 +434,7 @@
 		};
 		7418FE2721098B49005E060E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8317506B7886309BA539118 /* Pods-Travello.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -355,6 +450,7 @@
 		};
 		7418FE2821098B49005E060E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB798C63239E6E7B4BA9B8E6 /* Pods-Travello.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
