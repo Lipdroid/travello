@@ -8,11 +8,15 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
 
 class LoginVC: UIViewController {
 
+    @IBOutlet weak var email_field: UITextField!
     @IBOutlet weak var btn_or: UIButton!
     @IBOutlet weak var btn_fbLogin: FBSDKLoginButton!
+    @IBOutlet weak var password_field: UITextField!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +55,39 @@ class LoginVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func login_btn_pressed(_ sender: Any) {
+         let email = email_field.text!
+         let password = password_field.text!
+        
+        if email == ""{
+            //please put email address
+            Toast.show(message: "Please insert email address", controller: self)
+            return
+        }
+        if password == ""{
+            //please put password
+            Toast.show(message: "Please insert password", controller: self)
+            return
+        }
+        requestFirebaseToLogin(email: email,password: password)
+    }
+    
+    private func requestFirebaseToLogin(email: String,password: String){
+        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+            if(error != nil){
+                if password.count < 6{
+                    Toast.show(message: "Паролата е твърде кратка, въведете минимум 6 знака!", controller: self)
+                }else{
+                   Toast.show(message: "Удостоверяването не бе успешно, проверете имейла и паролата си или се регистрирайте", controller: self)
+                }
+                return
+            }
+            
+            //no error so successfully login
+            Toast.show(message: "Success", controller: self)
 
+            
+        }
+    }
 }
 
