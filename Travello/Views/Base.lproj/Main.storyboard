@@ -199,6 +199,7 @@
                         <outlet property="btn_or" destination="ZAI-Qf-7CZ" id="6Ts-j3-gRg"/>
                         <outlet property="email_field" destination="R5E-Sz-T3z" id="W09-px-ouy"/>
                         <outlet property="password_field" destination="d2m-re-3Je" id="CPm-oj-YDQ"/>
+                        <segue destination="ez7-2y-otc" kind="show" identifier="toMainVCSegue" id="R5l-gP-CIO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -212,6 +213,41 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="-39.200000000000003" y="85.907046476761622"/>
+        </scene>
+        <!--MainVC-->
+        <scene sceneID="ks9-z8-Gmx">
+            <objects>
+                <viewController id="ez7-2y-otc" customClass="MainVC" customModule="Travello" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dHq-4E-7Pa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Main Page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELB-fF-BPW">
+                                <rect key="frame" x="73" y="259" width="229" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-Ve-WlD">
+                                <rect key="frame" x="239" y="20" width="120" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="0.25882376270000002" green="0.25882376270000002" blue="0.25882376270000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="btn_logout_pressed:" destination="ez7-2y-otc" eventType="touchUpInside" id="sOu-cb-dh3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="EFZ-ni-9i2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEs-nd-mVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="696.79999999999995" y="85.907046476761622"/>
         </scene>
         <!--Reset PassVC-->
         <scene sceneID="IPo-k8-PhO">

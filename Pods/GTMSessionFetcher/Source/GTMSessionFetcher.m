@@ -369,14 +369,6 @@ static GTMSessionFetcherTestBlock GTM_NULLABLE_TYPE gGlobalTestBlock;
   [self beginFetchMayDelay:YES mayAuthorize:YES];
 }
 
-// Begin fetching the URL for a retry fetch. The delegate and completion handler
-// are already provided, and do not need to be copied.
-- (void)beginFetchForRetry {
-  GTMSessionCheckNotSynchronized(self);
-
-  [self beginFetchMayDelay:YES mayAuthorize:YES];
-}
-
 - (GTMSessionFetcherCompletionHandler)completionHandlerWithTarget:(GTM_NULLABLE_TYPE id)target
                                                 didFinishSelector:(GTM_NULLABLE_TYPE SEL)finishedSelector {
   GTMSessionFetcherAssertValidSelector(target, finishedSelector, @encode(GTMSessionFetcher *),
@@ -1327,7 +1319,7 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
   return fetchers;
 }
 
-#if TARGET_OS_IPHONE && !TARGET_OS_WATCH
+#if TARGET_OS_IPHONE
 + (void)application:(UIApplication *)application
     handleEventsForBackgroundURLSession:(NSString *)identifier
                       completionHandler:(GTMSessionFetcherSystemCompletionHandler)completionHandler {
@@ -1889,6 +1881,8 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
 - (void)retryFetch {
   [self stopFetchReleasingCallbacks:NO];
 
+  GTMSessionFetcherCompletionHandler completionHandler;
+
   // A retry will need a configuration with a fresh session identifier.
   @synchronized(self) {
     GTMSessionMonitorSynchronized(self);
@@ -1903,9 +1897,11 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
       // the service's old one has become invalid.
       _session = nil;
     }
+
+    completionHandler = _completionHandler;
   }  // @synchronized(self)
 
-  [self beginFetchForRetry];
+  [self beginFetchWithCompletionHandler:completionHandler];
 }
 
 - (BOOL)waitForCompletionWithTimeout:(NSTimeInterval)timeoutInSeconds {
@@ -1965,7 +1961,7 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
   gGlobalTestBlock = [block copy];
 }
 
-#if GTM_BACKGROUND_TASK_FETCHING
+#if TARGET_OS_IPHONE
 
 static GTM_NULLABLE_TYPE id<GTMUIApplicationProtocol> gSubstituteUIApp;
 
@@ -2001,7 +1997,7 @@ static GTM_NULLABLE_TYPE id<GTMUIApplicationProtocol> gSubstituteUIApp;
   }
   return app;
 }
-#endif //  GTM_BACKGROUND_TASK_FETCHING
+#endif //  TARGET_OS_IPHONE
 
 #pragma mark NSURLSession Delegate Methods
 
@@ -2852,8 +2848,7 @@ didCompleteWithError:(NSError *)error {
           // Create an error.
           NSDictionary *userInfo = nil;
           if (_downloadedData.length > 0) {
-            NSMutableData *data = _downloadedData;
-            userInfo = @{ kGTMSessionFetcherStatusDataKey : data };
+            userInfo = @{ kGTMSessionFetcherStatusDataKey : _downloadedData };
           }
           error = [NSError errorWithDomain:kGTMSessionFetcherStatusDomain
                                       code:status
@@ -3031,8 +3026,7 @@ didCompleteWithError:(NSError *)error {
     if (canRetry) {
       NSDictionary *userInfo = nil;
       if (_downloadedData.length > 0) {
-        NSMutableData *data = _downloadedData;
-        userInfo = @{ kGTMSessionFetcherStatusDataKey : data };
+        userInfo = @{ kGTMSessionFetcherStatusDataKey : _downloadedData };
       }
       NSError *statusError = [NSError errorWithDomain:kGTMSessionFetcherStatusDomain
                                                  code:status

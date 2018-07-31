@@ -678,7 +678,7 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
 @end
 #endif  // GTM_FETCHER_AUTHORIZATION_PROTOCOL
 
-#if GTM_BACKGROUND_TASK_FETCHING
+#if TARGET_OS_IPHONE
 // A protocol for an alternative target for messages from GTMSessionFetcher to UIApplication.
 // Set the target using +[GTMSessionFetcher setSubstituteUIApplication:]
 @protocol GTMUIApplicationProtocol <NSObject>
@@ -795,7 +795,7 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
 // dictionary is stored as identifier metadata.
 - (GTM_NULLABLE GTM_NSDictionaryOf(NSString *, NSString *) *)sessionIdentifierMetadata;
 
-#if TARGET_OS_IPHONE && !TARGET_OS_WATCH
+#if TARGET_OS_IPHONE
 // The app should pass to this method the completion handler passed in the app delegate method
 // application:handleEventsForBackgroundURLSession:completionHandler:
 + (void)application:(UIApplication *)application
@@ -1146,12 +1146,12 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
 // size of the response data (e.g. a 1-byte response can only be divided into one chunk).
 @property(atomic, readwrite) NSUInteger testBlockAccumulateDataChunkCount;
 
-#if GTM_BACKGROUND_TASK_FETCHING
+#if TARGET_OS_IPHONE
 // For testing or to override UIApplication invocations, apps may specify an alternative
 // target for messages to UIApplication.
 + (void)setSubstituteUIApplication:(nullable id<GTMUIApplicationProtocol>)substituteUIApplication;
 + (nullable id<GTMUIApplicationProtocol>)substituteUIApplication;
-#endif  // GTM_BACKGROUND_TASK_FETCHING
+#endif  // TARGET_OS_IPHONE
 
 // Exposed for testing.
 + (GTMSessionCookieStorage *)staticCookieStorage;

@@ -7,6 +7,10 @@
 //
 
 import Foundation
+
+typealias Completion = (AnyObject)->()
 struct Constants {
     static let VERSION: String = ""
+    //storyboard segue
+    static let LOGINVIEW_TO_MAINVIEW = "toMainVCSegue"
 }

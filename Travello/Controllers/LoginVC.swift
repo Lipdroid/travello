@@ -10,13 +10,13 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 
-class LoginVC: UIViewController {
-
+class LoginVC: UIViewController,FBSDKLoginButtonDelegate {
     @IBOutlet weak var email_field: UITextField!
     @IBOutlet weak var btn_or: UIButton!
     @IBOutlet weak var btn_fbLogin: FBSDKLoginButton!
     @IBOutlet weak var password_field: UITextField!
-
+    var mUserObj: UserObject! = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,24 @@ class LoginVC: UIViewController {
         //change fb button text
         let buttonText = NSAttributedString(string: "Continue With Facebook")
         btn_fbLogin.setAttributedTitle(buttonText, for: .normal)
+        btn_fbLogin.readPermissions = ["public_profile", "email", "user_friends"]
+
+        self.btn_fbLogin.delegate = self
+
+        if let user = FIRAuth.auth()?.currentUser {
+                let uid = user.uid
+                //get the user data from firebase
+                DADataService.instance.getUserFromFirebaseDB(uid: uid){
+                    (response) in
+                    if let user = response as? UserObject{
+                        self.mUserObj = user
+                        //go to main page
+                        self.go_to_main_page()
+                    }
+            }
+        } else {
+            //User Not logged in
+        }
     
     }
 
@@ -84,10 +102,51 @@ class LoginVC: UIViewController {
             }
             
             //no error so successfully login
-            Toast.show(message: "Success", controller: self)
-
-            
+    
+            if let uid = user?.uid{
+                //get the user data from firebase
+                DADataService.instance.getUserFromFirebaseDB(uid: uid){
+                    (response) in
+                    if let user = response as? UserObject{
+                        self.mUserObj = user
+                        //go to main page
+                        self.go_to_main_page()
+                    }
+                }
+            }
         }
+    }
+    
+    func go_to_main_page(){
+        performSegue(withIdentifier: Constants.LOGINVIEW_TO_MAINVIEW, sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.LOGINVIEW_TO_MAINVIEW{
+            if let dest: MainVC = segue.destination as? MainVC{
+                dest.mUserObj = self.mUserObj
+            }
+        }
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if ((error) != nil) {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // Navigate to other view
+            //Login successfull
+            if let token = FBSDKAccessToken.current() {
+                let accessToken = token.tokenString
+                // USE YOUR TOKEN HERE
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        //logout
     }
 }
 

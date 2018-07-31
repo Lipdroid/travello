@@ -12,9 +12,17 @@
 		7418FE1D21098B49005E060E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7418FE1B21098B49005E060E /* Main.storyboard */; };
 		7418FE1F21098B49005E060E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7418FE1E21098B49005E060E /* Assets.xcassets */; };
 		7418FE2221098B49005E060E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7418FE2021098B49005E060E /* LaunchScreen.storyboard */; };
+		74502B3A210EBF5E00346497 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74502B39210EBF5E00346497 /* GoogleService-Info.plist */; };
+		74502B3C210EC31E00346497 /* ResetPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74502B3B210EC31D00346497 /* ResetPassVC.swift */; };
+		74502B3E210EE7E200346497 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74502B3D210EE7E200346497 /* UITextField+Extensions.swift */; };
+		74502B40210EE87D00346497 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74502B3F210EE87D00346497 /* SignUpVC.swift */; };
+		74502B42210F039A00346497 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74502B41210F039A00346497 /* Toast.swift */; };
+		74502B45210F08D200346497 /* DADataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74502B44210F08D200346497 /* DADataService.swift */; };
+		74502B47210F0EA500346497 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74502B46210F0EA500346497 /* UserObject.swift */; };
 		74551327210AD1A700BFF566 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74551326210AD1A700BFF566 /* Constants.swift */; };
 		7455132A210AD60100BFF566 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74551329210AD60100BFF566 /* Modal.swift */; };
 		7455132D210AD6D800BFF566 /* TermsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7455132C210AD6D800BFF566 /* TermsAlertView.swift */; };
+		74CFAEFD21105FE700BDA9E3 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CFAEFC21105FE700BDA9E3 /* MainVC.swift */; };
 		C9090D87CE9219776144E301 /* Pods_Travello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC8611E91899758BF1C3E26 /* Pods_Travello.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,9 +35,17 @@
 		7418FE1E21098B49005E060E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7418FE2121098B49005E060E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7418FE2321098B49005E060E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74502B39210EBF5E00346497 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		74502B3B210EC31D00346497 /* ResetPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassVC.swift; sourceTree = "<group>"; };
+		74502B3D210EE7E200346497 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		74502B3F210EE87D00346497 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		74502B41210F039A00346497 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		74502B44210F08D200346497 /* DADataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DADataService.swift; sourceTree = "<group>"; };
+		74502B46210F0EA500346497 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		74551326210AD1A700BFF566 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		74551329210AD60100BFF566 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		7455132C210AD6D800BFF566 /* TermsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAlertView.swift; sourceTree = "<group>"; };
+		74CFAEFC21105FE700BDA9E3 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		C8317506B7886309BA539118 /* Pods-Travello.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travello.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Travello/Pods-Travello.debug.xcconfig"; sourceTree = "<group>"; };
 		CB798C63239E6E7B4BA9B8E6 /* Pods-Travello.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travello.release.xcconfig"; path = "Pods/Target Support Files/Pods-Travello/Pods-Travello.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +92,7 @@
 		7418FE1621098B49005E060E /* Travello */ = {
 			isa = PBXGroup;
 			children = (
+				74502B43210F08B700346497 /* Services */,
 				74551328210AD5E800BFF566 /* Protocol&Extensions */,
 				7418FE2D21099028005E060E /* Constants */,
 				7418FE2C21098E89005E060E /* Resources */,
@@ -89,6 +106,7 @@
 		7418FE2921098E6D005E060E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				74502B46210F0EA500346497 /* UserObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -108,6 +126,9 @@
 			children = (
 				7418FE1721098B49005E060E /* AppDelegate.swift */,
 				7418FE1921098B49005E060E /* LoginVC.swift */,
+				74502B3B210EC31D00346497 /* ResetPassVC.swift */,
+				74502B3F210EE87D00346497 /* SignUpVC.swift */,
+				74CFAEFC21105FE700BDA9E3 /* MainVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +138,7 @@
 			children = (
 				7418FE2321098B49005E060E /* Info.plist */,
 				7418FE1E21098B49005E060E /* Assets.xcassets */,
+				74502B39210EBF5E00346497 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -129,10 +151,19 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		74502B43210F08B700346497 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				74502B44210F08D200346497 /* DADataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		74551328210AD5E800BFF566 /* Protocol&Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				74551329210AD60100BFF566 /* Modal.swift */,
+				74502B3D210EE7E200346497 /* UITextField+Extensions.swift */,
 			);
 			path = "Protocol&Extensions";
 			sourceTree = "<group>";
@@ -141,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				7455132C210AD6D800BFF566 /* TermsAlertView.swift */,
+				74502B41210F039A00346497 /* Toast.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -216,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7418FE2221098B49005E060E /* LaunchScreen.storyboard in Resources */,
+				74502B3A210EBF5E00346497 /* GoogleService-Info.plist in Resources */,
 				7418FE1F21098B49005E060E /* Assets.xcassets in Resources */,
 				7418FE1D21098B49005E060E /* Main.storyboard in Resources */,
 			);
@@ -267,7 +300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A54DB004A7C76C5FC665F90F /* [CP] Copy Pods Resources */ = {
@@ -295,10 +328,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74502B40210EE87D00346497 /* SignUpVC.swift in Sources */,
+				74CFAEFD21105FE700BDA9E3 /* MainVC.swift in Sources */,
+				74502B47210F0EA500346497 /* UserObject.swift in Sources */,
+				74502B3E210EE7E200346497 /* UITextField+Extensions.swift in Sources */,
+				74502B45210F08D200346497 /* DADataService.swift in Sources */,
 				7455132D210AD6D800BFF566 /* TermsAlertView.swift in Sources */,
 				7418FE1A21098B49005E060E /* LoginVC.swift in Sources */,
 				7418FE1821098B49005E060E /* AppDelegate.swift in Sources */,
+				74502B3C210EC31E00346497 /* ResetPassVC.swift in Sources */,
 				74551327210AD1A700BFF566 /* Constants.swift in Sources */,
+				74502B42210F039A00346497 /* Toast.swift in Sources */,
 				7455132A210AD60100BFF566 /* Modal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,7 +481,7 @@
 				DEVELOPMENT_TEAM = 7A9JA8PNZH;
 				INFOPLIST_FILE = "$(SRCROOT)/Travello/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Lipdroid.Travello;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.Travello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -457,7 +497,7 @@
 				DEVELOPMENT_TEAM = 7A9JA8PNZH;
 				INFOPLIST_FILE = "$(SRCROOT)/Travello/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Lipdroid.Travello;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.Travello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

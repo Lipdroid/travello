@@ -21,4 +21,23 @@ class DADataService{
     var REF_USER: FIRDatabaseReference{
         return _REF_USER
     }
+    
+    func getUserFromFirebaseDB(uid: String,callback: @escaping Completion){
+        REF_USER.child(uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            if let snap = snapshot.value as? Dictionary<String,String>{
+                guard let address = snap["address"] else{ return}
+                guard let age = snap["age"] else{ return}
+                guard let avata = snap["avata"] else{ return}
+                guard let email = snap["email"] else{ return}
+                guard let imageUrl = snap ["imageUrl"] else{ return}
+                guard let name = snap ["name"] else{ return}
+                guard let phoneNumber = snap ["phoneNumber"] else{ return}
+                
+                let mUserObj = UserObject(address: address,age: age,avata: avata,email: email,id: uid,imageUrl: imageUrl,name: name,phoneNumber: phoneNumber)
+                callback(mUserObj)
+            }else{
+                print("firebase error")
+            }
+        })
+    }
 }

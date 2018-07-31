@@ -1,4 +1,4 @@
-/** @file FIREmailAuthProvider.h
+/** @file FIREmailPasswordAuthProvider.h
     @brief Firebase Auth SDK
     @copyright Copyright 2016 Google Inc.
     @remarks Use of this SDK is subject to the Google APIs Terms of Service:
@@ -7,8 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FIRAuthSwiftNameSupport.h"
-
 @class FIRAuthCredential;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,24 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
     @brief A string constant identifying the email & password identity provider.
  */
-extern NSString *const FIREmailAuthProviderID FIR_SWIFT_NAME(EmailAuthProviderID);
+extern NSString *const FIREmailPasswordAuthProviderID;
 
-/**
-    @brief please use @c FIREmailAuthProviderID instead.
- */
-extern NSString *const FIREmailPasswordAuthProviderID __attribute__((deprecated));
-
-/** @class FIREmailAuthProvider
+/** @class FIREmailPasswordAuthProvider
     @brief A concrete implementation of @c FIRAuthProvider for Email & Password Sign In.
  */
-FIR_SWIFT_NAME(EmailAuthProvider)
-@interface FIREmailAuthProvider : NSObject
-
-/** @typedef FIREmailPasswordAuthProvider
-    @brief Please use @c FIREmailAuthProvider instead.
- */
-typedef FIREmailAuthProvider FIREmailPasswordAuthProvider __attribute__((deprecated));
-
+@interface FIREmailPasswordAuthProvider : NSObject
 
 /** @fn credentialWithEmail:password:
     @brief Creates an @c FIRAuthCredential for an email & password sign in.
