@@ -16,7 +16,8 @@ class UserObject {
     private var _imageUrl: String?
     private var _name: String?
     private var _phoneNumber: String?
-    
+    private var _provider: String?
+
     
     var address: String?{
         get{
@@ -82,7 +83,16 @@ class UserObject {
             _phoneNumber = newValue
         }
     }
-    init(address: String,age: String,avata: String,email: String,id: String,imageUrl:String,name: String,phoneNumber: String) {
+    
+    var provider: String?{
+        get{
+            return _provider
+        }
+        set{
+            _provider = newValue
+        }
+    }
+    init(address: String,age: String,avata: String,email: String,id: String,imageUrl:String,name: String,phoneNumber: String,provider: String) {
         self._address = address
         self._age = age
         self._avata = avata
@@ -91,6 +101,30 @@ class UserObject {
         self._imageUrl = imageUrl
         self._name = name
         self._phoneNumber = phoneNumber
+        self._provider = provider
         }
+    
+    //this is for facebook user
+    init(authId: String, dict: Dictionary<String, AnyObject>) {
+        self._id = authId
+        if let name = dict["name"] as? String{
+            _name = name
+        }
+        if let email = dict["email"] as? String{
+            _email = email
+        }
+        if let picture = dict["picture"] as? Dictionary<String,AnyObject>{
+            if let data = picture["data"] as? Dictionary<String,AnyObject>{
+                if let imageUrl = data["url"] as? String{
+                    _imageUrl = imageUrl
+                }
+            }
+        }
+        self._address = ""
+        self._age = ""
+        self._avata = ""
+        self._phoneNumber = ""
+        self._provider = Constants.FB_PROVIDER
+    }
     
 }

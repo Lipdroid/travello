@@ -32,12 +32,34 @@ class DADataService{
                 guard let imageUrl = snap ["imageUrl"] else{ return}
                 guard let name = snap ["name"] else{ return}
                 guard let phoneNumber = snap ["phoneNumber"] else{ return}
-                
-                let mUserObj = UserObject(address: address,age: age,avata: avata,email: email,id: uid,imageUrl: imageUrl,name: name,phoneNumber: phoneNumber)
-                callback(mUserObj)
+                //old android version doesnot have provider so check
+                //provider available or not
+                //if not available just set an empty string
+                if let provider = snap ["provider"]{
+                    let mUserObj = UserObject(address: address,age: age,avata: avata,email: email,id: uid,imageUrl: imageUrl,name: name,phoneNumber: phoneNumber,provider: provider)
+                    callback(mUserObj)
+                } else{
+                    let mUserObj = UserObject(address: address,age: age,avata: avata,email: email,id: uid,imageUrl: imageUrl,name: name,phoneNumber: phoneNumber,provider: "")
+                    callback(mUserObj)
+                }
+            
             }else{
                 print("firebase error")
             }
         })
+    }
+    
+    func createFirebaseDBUser(uid: String, userObject: UserObject){
+        let user = ["address": userObject.address,
+                    "age": userObject.age,
+                    "avata": userObject.avata,
+                    "email": userObject.email,
+                    "id":uid,
+                    "imageUrl":userObject.imageUrl,
+                    "name":userObject.name,
+                    "phoneNumber":userObject.phoneNumber,
+                    "provider":userObject.provider]
+        
+        REF_USER.child(uid).updateChildValues(user as Any as! [AnyHashable : Any])
     }
 }

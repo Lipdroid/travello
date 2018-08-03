@@ -22,6 +22,7 @@
 		74551327210AD1A700BFF566 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74551326210AD1A700BFF566 /* Constants.swift */; };
 		7455132A210AD60100BFF566 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74551329210AD60100BFF566 /* Modal.swift */; };
 		7455132D210AD6D800BFF566 /* TermsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7455132C210AD6D800BFF566 /* TermsAlertView.swift */; };
+		749C7BC02111AAF50001FFD6 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749C7BBF2111AAF50001FFD6 /* Progress.swift */; };
 		74CFAEFD21105FE700BDA9E3 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CFAEFC21105FE700BDA9E3 /* MainVC.swift */; };
 		C9090D87CE9219776144E301 /* Pods_Travello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC8611E91899758BF1C3E26 /* Pods_Travello.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		74551326210AD1A700BFF566 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		74551329210AD60100BFF566 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		7455132C210AD6D800BFF566 /* TermsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAlertView.swift; sourceTree = "<group>"; };
+		749C7BBF2111AAF50001FFD6 /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		74CFAEFC21105FE700BDA9E3 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		C8317506B7886309BA539118 /* Pods-Travello.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travello.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Travello/Pods-Travello.debug.xcconfig"; sourceTree = "<group>"; };
 		CB798C63239E6E7B4BA9B8E6 /* Pods-Travello.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travello.release.xcconfig"; path = "Pods/Target Support Files/Pods-Travello/Pods-Travello.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		7455132B210AD6C700BFF566 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				749C7BBF2111AAF50001FFD6 /* Progress.swift */,
 				7455132C210AD6D800BFF566 /* TermsAlertView.swift */,
 				74502B41210F039A00346497 /* Toast.swift */,
 			);
@@ -336,6 +339,7 @@
 				7455132D210AD6D800BFF566 /* TermsAlertView.swift in Sources */,
 				7418FE1A21098B49005E060E /* LoginVC.swift in Sources */,
 				7418FE1821098B49005E060E /* AppDelegate.swift in Sources */,
+				749C7BC02111AAF50001FFD6 /* Progress.swift in Sources */,
 				74502B3C210EC31E00346497 /* ResetPassVC.swift in Sources */,
 				74551327210AD1A700BFF566 /* Constants.swift in Sources */,
 				74502B42210F039A00346497 /* Toast.swift in Sources */,

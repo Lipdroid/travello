@@ -21,25 +21,7 @@ class LoginVC: UIViewController,FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //get the current app version
-        //if current version is equal with prev version then do nothing
-        //else show terms pop up
-        if let version = Bundle.main.infoDictionary?["CFBundleVersion"]  as? String{
-            //Check if version value set in userDefaults
-            if let prev_version = UserDefaults.standard.object(forKey: Constants.VERSION) as? String{
-                if version != prev_version {
-                    //show a dialog pop up
-                    let alert = TermsAlertView()
-                    alert.show(animated: true)
-                }
-            }else{
-                //for the first time
-                //show a dialog pop up
-                let alert = TermsAlertView()
-                alert.show(animated: true)
-            }
-        }
-        
+        checkForVersion()
         //make the OR button round
         btn_or.layer.cornerRadius = 0.5 * btn_or.bounds.size.width
         btn_or.clipsToBounds = true
@@ -47,15 +29,17 @@ class LoginVC: UIViewController,FBSDKLoginButtonDelegate {
         //change fb button text
         let buttonText = NSAttributedString(string: "Continue With Facebook")
         btn_fbLogin.setAttributedTitle(buttonText, for: .normal)
-        btn_fbLogin.readPermissions = ["public_profile", "email", "user_friends"]
+        btn_fbLogin.readPermissions = ["public_profile", "email"]
 
         self.btn_fbLogin.delegate = self
 
         if let user = FIRAuth.auth()?.currentUser {
+                Progress.sharedInstance.showLoading()
                 let uid = user.uid
                 //get the user data from firebase
                 DADataService.instance.getUserFromFirebaseDB(uid: uid){
                     (response) in
+                    Progress.sharedInstance.dismissLoading()
                     if let user = response as? UserObject{
                         self.mUserObj = user
                         //go to main page
@@ -91,8 +75,10 @@ class LoginVC: UIViewController,FBSDKLoginButtonDelegate {
     }
     
     private func requestFirebaseToLogin(email: String,password: String){
+        Progress.sharedInstance.showLoading()
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if(error != nil){
+                Progress.sharedInstance.dismissLoading()
                 if password.count < 6{
                     Toast.show(message: "Паролата е твърде кратка, въведете минимум 6 знака!", controller: self)
                 }else{
@@ -107,6 +93,7 @@ class LoginVC: UIViewController,FBSDKLoginButtonDelegate {
                 //get the user data from firebase
                 DADataService.instance.getUserFromFirebaseDB(uid: uid){
                     (response) in
+                    Progress.sharedInstance.dismissLoading()
                     if let user = response as? UserObject{
                         self.mUserObj = user
                         //go to main page
@@ -118,6 +105,10 @@ class LoginVC: UIViewController,FBSDKLoginButtonDelegate {
     }
     
     func go_to_main_page(){
+        //clear the fields
+        email_field.text = ""
+        password_field.text = ""
+        //perform segue
         performSegue(withIdentifier: Constants.LOGINVIEW_TO_MAINVIEW, sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -136,17 +127,80 @@ class LoginVC: UIViewController,FBSDKLoginButtonDelegate {
             // Handle cancellations
         }
         else {
-            // Navigate to other view
             //Login successfull
             if let token = FBSDKAccessToken.current() {
-                let accessToken = token.tokenString
+                guard let accessToken = token.tokenString else
+                {
+                    return
+                }
                 // USE YOUR TOKEN HERE
+                Progress.sharedInstance.showLoading()
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken)
+                FIRAuth.auth()?.signIn(with: credential, completion: { (User, error) in
+                    if(error != nil){
+                        Progress.sharedInstance.dismissLoading()
+                        Toast.show(message: "Something went wrong\(String(describing: error?.localizedDescription))", controller: self)
+                        print(error ?? "")
+                        return
+                    }
+                    self.getFBUserData()
+                    print("facebook authentication complete through firebase")
+                })
+                
             }
+        }
+    }
+    
+    func getFBUserData(){
+        if((FBSDKAccessToken.current()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
+                if (error == nil){
+                    print(result!)
+                    if let dict = result as? Dictionary<String,AnyObject>{
+                        if let authId = FIRAuth.auth()?.currentUser?.uid{
+                            self.mUserObj = UserObject(authId: authId,dict: dict)
+                            DADataService.instance.createFirebaseDBUser(uid: (FIRAuth.auth()?.currentUser?.uid)!, userObject: self.mUserObj!)
+                            Progress.sharedInstance.dismissLoading()
+                            self.go_to_main_page()
+                        }else{
+                            Progress.sharedInstance.dismissLoading()
+                            print("no uid found from firebase current user for fb")
+                        }
+                        
+                    }
+                    
+                }
+            })
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         //logout
+    }
+    
+    func checkForVersion(){
+        //get the current app version
+        //if current version is equal with prev version then do nothing
+        //else show terms pop up
+        if let version = Bundle.main.infoDictionary?["CFBundleVersion"]  as? String{
+            //Check if version value set in userDefaults
+            if let prev_version = UserDefaults.standard.object(forKey: Constants.VERSION) as? String{
+                if version != prev_version {
+                    //show a dialog pop up
+                    let alert = TermsAlertView()
+                    alert.show(animated: true)
+                }
+            }else{
+                //for the first time
+                //show a dialog pop up
+                let alert = TermsAlertView()
+                alert.show(animated: true)
+            }
+        }else{
+            //anything wrong with getting bundle from info.plist
+            //show a dialog pop up
+            print("can not get bundle for info.plish")
+        }
     }
 }
 

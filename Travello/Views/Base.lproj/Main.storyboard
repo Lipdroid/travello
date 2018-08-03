@@ -320,6 +320,9 @@
                                 <state key="normal" title="Нулиране на паролата">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="afterClickReset:" destination="SVV-sp-EkK" eventType="touchUpInside" id="CHq-qD-SMX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqI-fe-7Oa">
                                 <rect key="frame" x="20" y="445" width="335" height="40"/>
@@ -361,10 +364,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0yd-YV-Nx4"/>
                     </view>
+                    <connections>
+                        <outlet property="email_field" destination="keZ-Ke-VE4" id="anT-Wt-8BK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uP-dL-ThA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652" y="752"/>
+            <point key="canvasLocation" x="686" y="1003"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="E38-Zh-tsF">
@@ -582,6 +588,9 @@
                                 <state key="normal" title="Създаване на нов акаунт">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="afterClickSignUp:" destination="FAW-hm-WqQ" eventType="touchUpInside" id="uFJ-UF-9kk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -610,6 +619,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KAF-7m-JNF"/>
                     </view>
+                    <connections>
+                        <outlet property="address" destination="UAJ-hQ-MMt" id="9BU-E9-jvN"/>
+                        <outlet property="age" destination="aqf-lE-CvE" id="yTZ-jG-5SF"/>
+                        <outlet property="email" destination="QIg-CG-p3E" id="s30-R8-eDO"/>
+                        <outlet property="name" destination="B9V-s9-akf" id="OlW-oO-cga"/>
+                        <outlet property="password" destination="OqK-JD-KYM" id="k51-NQ-7P1"/>
+                        <outlet property="phone" destination="1pM-SC-4Fo" id="FfX-Bt-20K"/>
+                        <segue destination="ez7-2y-otc" kind="show" identifier="signUpToMainVCSegue" id="m1W-Rr-bfo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6U8-kg-v5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="efO-R5-RJ8">
@@ -638,7 +656,7 @@
                     <viewLayoutGuide key="safeArea" id="2Vu-gY-uET"/>
                 </stackView>
             </objects>
-            <point key="canvasLocation" x="-39" y="752"/>
+            <point key="canvasLocation" x="-84" y="1003"/>
         </scene>
     </scenes>
     <resources>
@@ -646,6 +664,7 @@
         <image name="travellologo" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aBb-ZJ-7Ln"/>
+        <segue reference="frn-BU-hAw"/>
+        <segue reference="m1W-Rr-bfo"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class MainVC: UIViewController {
     var mUserObj: UserObject! = nil
@@ -18,6 +19,12 @@ class MainVC: UIViewController {
             try FIRAuth.auth()?.signOut()
         }catch let error as NSError{
             print(error.localizedDescription)
+        }
+        //if fbUser
+        if (FBSDKAccessToken.current()) != nil
+        {
+            FBSDKLoginManager().logOut()
+
         }
         //dismiss page
         dismiss(animated: true, completion: nil)

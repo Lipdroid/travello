@@ -7,11 +7,30 @@
 //
 
 import UIKit
+import Firebase
 
 class ResetPassVC: UIViewController {
 
+    @IBOutlet weak var email_field: UITextField!
     @IBAction func onBackPress(_ sender: Any) {
     dismiss(animated: true, completion: nil)
+    }
+    @IBAction func afterClickReset(_ sender: Any) {
+        let email = email_field.text!
+        if(email == ""){
+            Toast.show(message: "Enter your registered email id", controller: self)
+            return
+        }
+        Progress.sharedInstance.showLoading()
+        FIRAuth.auth()?.sendPasswordReset(withEmail: email) { error in
+            // Your code here
+            Progress.sharedInstance.dismissLoading()
+            if(error != nil){
+                Toast.show(message: "Failed to send reset email!", controller: self)
+                return
+            }
+            Toast.show(message: "We have sent you instructions to reset your password!", controller: self)
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
