@@ -21,6 +21,7 @@ class MainVC: UIViewController {
     }
     @IBAction func btn_logout_pressed(_ sender: Any) {
         do{
+            toggleLeftMenu()
             //logout firebase user
             try FIRAuth.auth()?.signOut()
         }catch let error as NSError{
