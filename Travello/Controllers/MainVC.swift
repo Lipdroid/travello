@@ -15,6 +15,9 @@ class MainVC: UIViewController {
     @IBOutlet weak var email_lbl: UILabel!
     @IBOutlet weak var avatar: CircleImageView!
     
+    @IBOutlet weak var btn_post: UIButton!
+    @IBOutlet weak var btn_browse: UIButton!
+    
     var mUserObj: UserObject! = nil
     @IBOutlet weak var left_nav_menu: UIView!
     @IBOutlet weak var left_nav_leading_constraint: NSLayoutConstraint!
@@ -59,7 +62,9 @@ class MainVC: UIViewController {
         setUserData()
         //set tap recognizers in the drawer
         addGestureToMenuItems()
-        // Do any additional setup after loading the view.
+        //rounded the corners on the buttons
+        btn_post.layer.cornerRadius = 5
+        btn_browse.layer.cornerRadius = 5
     }
     
     private func setUserData(){
@@ -145,5 +150,10 @@ class MainVC: UIViewController {
         
         left_nav_view_isShown = !left_nav_view_isShown
     }
-
+ 
+    @IBAction func after_click_post(_ sender: Any) {
+    }
+    
+    @IBAction func after_click_browse(_ sender: Any) {
+    }
 }

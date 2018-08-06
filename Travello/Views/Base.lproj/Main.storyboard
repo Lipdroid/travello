@@ -224,14 +224,35 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launcherbg" translatesAutoresizingMaskIntoConstraints="NO" id="NMz-5I-jKK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Main Page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELB-fF-BPW">
-                                <rect key="frame" x="73" y="259" width="229" height="149"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30v-2n-h4B">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ebf-Cw-hQO">
+                                <rect key="frame" x="20" y="293.5" width="335" height="80"/>
+                                <color key="backgroundColor" red="0.14901960784313725" green="0.68235294117647061" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="jIu-zf-Wq6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <inset key="titleEdgeInsets" minX="44" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="Обяви превоз" image="sports_car"/>
+                                <connections>
+                                    <action selector="after_click_post:" destination="ez7-2y-otc" eventType="touchUpInside" id="Hib-9L-zJf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NQp-TT-qPm">
+                                <rect key="frame" x="20" y="381.5" width="335" height="80"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.68235294120000001" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="pJR-Jr-B9u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="44" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="Прегледай регистрираните обяви" image="smart_car"/>
+                                <connections>
+                                    <action selector="after_click_browse:" destination="ez7-2y-otc" eventType="touchUpInside" id="r9q-Kv-0es"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30v-2n-h4B" userLabel="header" propertyAccessControl="all">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_icon" translatesAutoresizingMaskIntoConstraints="NO" id="xvX-2W-bZC">
@@ -268,7 +289,7 @@
                                     <constraint firstAttribute="height" constant="65" id="xZw-Dx-ul7"/>
                                 </constraints>
                             </view>
-                            <visualEffectView hidden="YES" opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kB-GT-gcX">
+                            <visualEffectView hidden="YES" opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kB-GT-gcX" propertyAccessControl="all">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qU1-fK-vBe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -276,6 +297,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuk-Su-aAS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <connections>
                                                 <action selector="pressed_outside_navDrawer:" destination="ez7-2y-otc" eventType="touchUpInside" id="hcW-9N-4q4"/>
                                             </connections>
@@ -290,7 +312,7 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlL-Wj-NSL" userLabel="LeftNavMenu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlL-Wj-NSL" userLabel="LeftNavMenu" propertyAccessControl="all">
                                 <rect key="frame" x="-330" y="0.0" width="330" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_header" translatesAutoresizingMaskIntoConstraints="NO" id="LZD-aS-KpC">
@@ -530,30 +552,38 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NMz-5I-jKK" firstAttribute="centerY" secondItem="dHq-4E-7Pa" secondAttribute="centerY" id="0Oe-SQ-b3I"/>
+                            <constraint firstItem="7kB-GT-gcX" firstAttribute="leading" secondItem="EFZ-ni-9i2" secondAttribute="leading" id="6Xn-Ai-xTq"/>
                             <constraint firstItem="30v-2n-h4B" firstAttribute="top" secondItem="dHq-4E-7Pa" secondAttribute="top" id="8jU-Gt-ld7"/>
                             <constraint firstItem="NMz-5I-jKK" firstAttribute="bottom" secondItem="EFZ-ni-9i2" secondAttribute="bottom" id="BaZ-Ld-dU0"/>
+                            <constraint firstItem="NQp-TT-qPm" firstAttribute="top" secondItem="Ebf-Cw-hQO" secondAttribute="bottom" constant="8" id="BgM-tV-ZxG"/>
+                            <constraint firstItem="EFZ-ni-9i2" firstAttribute="trailing" secondItem="NQp-TT-qPm" secondAttribute="trailing" constant="20" id="CAl-kC-6XW"/>
                             <constraint firstItem="30v-2n-h4B" firstAttribute="trailing" secondItem="EFZ-ni-9i2" secondAttribute="trailing" id="EDs-Oi-tB2"/>
                             <constraint firstItem="NMz-5I-jKK" firstAttribute="top" secondItem="dHq-4E-7Pa" secondAttribute="top" id="I4F-dy-CRJ"/>
                             <constraint firstItem="30v-2n-h4B" firstAttribute="leading" secondItem="EFZ-ni-9i2" secondAttribute="leading" id="Kw1-hc-BM4"/>
                             <constraint firstItem="tlL-Wj-NSL" firstAttribute="leading" secondItem="dHq-4E-7Pa" secondAttribute="leading" constant="-330" id="OKN-os-aFC"/>
+                            <constraint firstItem="NQp-TT-qPm" firstAttribute="leading" secondItem="dHq-4E-7Pa" secondAttribute="leading" constant="20" id="P3N-5T-W8m"/>
                             <constraint firstItem="NMz-5I-jKK" firstAttribute="trailing" secondItem="EFZ-ni-9i2" secondAttribute="trailing" id="PP7-dH-ogR"/>
+                            <constraint firstItem="Ebf-Cw-hQO" firstAttribute="centerX" secondItem="dHq-4E-7Pa" secondAttribute="centerX" id="Q3x-hi-OnZ"/>
                             <constraint firstItem="7kB-GT-gcX" firstAttribute="bottom" secondItem="EFZ-ni-9i2" secondAttribute="bottom" id="Rgm-N3-JuN"/>
                             <constraint firstItem="7kB-GT-gcX" firstAttribute="top" secondItem="dHq-4E-7Pa" secondAttribute="top" id="Str-7K-d1E"/>
+                            <constraint firstItem="Ebf-Cw-hQO" firstAttribute="centerY" secondItem="dHq-4E-7Pa" secondAttribute="centerY" id="VXM-jl-Voe"/>
                             <constraint firstItem="NMz-5I-jKK" firstAttribute="centerX" secondItem="dHq-4E-7Pa" secondAttribute="centerX" id="f7u-4v-j1g"/>
-                            <constraint firstItem="7kB-GT-gcX" firstAttribute="leading" secondItem="tlL-Wj-NSL" secondAttribute="trailing" id="jre-TN-8lD"/>
                             <constraint firstItem="7kB-GT-gcX" firstAttribute="trailing" secondItem="EFZ-ni-9i2" secondAttribute="trailing" id="kFb-u8-n0o"/>
                             <constraint firstAttribute="bottom" secondItem="tlL-Wj-NSL" secondAttribute="bottom" id="tHu-P0-ac0"/>
                             <constraint firstItem="tlL-Wj-NSL" firstAttribute="top" secondItem="dHq-4E-7Pa" secondAttribute="top" id="uBn-MH-ffI"/>
                             <constraint firstItem="NMz-5I-jKK" firstAttribute="leading" secondItem="EFZ-ni-9i2" secondAttribute="leading" id="wL2-YU-crE"/>
+                            <constraint firstItem="EFZ-ni-9i2" firstAttribute="trailing" secondItem="Ebf-Cw-hQO" secondAttribute="trailing" constant="20" id="zEY-z9-8cQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EFZ-ni-9i2"/>
                     </view>
                     <connections>
                         <outlet property="avatar" destination="rXj-iS-zPs" id="Esf-IW-lT9"/>
+                        <outlet property="btn_browse" destination="NQp-TT-qPm" id="QGH-Qd-dMR"/>
                         <outlet property="btn_chat" destination="kem-7v-z8g" id="Xj6-pl-WBj"/>
                         <outlet property="btn_friends" destination="Iok-Zj-MAq" id="EqN-OC-FXD"/>
                         <outlet property="btn_home" destination="0Bs-u6-Pj4" id="zMv-i5-wmR"/>
                         <outlet property="btn_logout" destination="gUU-gC-Qce" id="CiO-Lk-R7s"/>
+                        <outlet property="btn_post" destination="Ebf-Cw-hQO" id="I8m-aF-v3E"/>
                         <outlet property="btn_rides" destination="cbS-OM-Suy" id="YHH-8F-Sp0"/>
                         <outlet property="btn_save" destination="sgG-3t-OVu" id="WWz-j9-h6k"/>
                         <outlet property="btn_trip_plan" destination="8lQ-K2-uBr" id="Mlt-rV-5vY"/>
@@ -985,6 +1015,8 @@
         <image name="nav_header" width="720" height="1280"/>
         <image name="nav_icon" width="90" height="90"/>
         <image name="save" width="90" height="90"/>
+        <image name="smart_car" width="64" height="64"/>
+        <image name="sports_car" width="64" height="64"/>
         <image name="travellologo" width="500" height="500"/>
         <image name="trip_plan" width="96" height="96"/>
     </resources>
