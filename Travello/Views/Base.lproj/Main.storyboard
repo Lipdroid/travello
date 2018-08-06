@@ -311,12 +311,45 @@
                                             <constraint firstAttribute="height" constant="200" id="Hwt-9v-OW2"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_avata" translatesAutoresizingMaskIntoConstraints="NO" id="rXj-iS-zPs" customClass="CircleImageView" customModule="Travello" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="30" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="FsL-He-7Gs"/>
+                                            <constraint firstAttribute="width" constant="80" id="mJQ-YG-HZT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43w-eo-Gej">
+                                        <rect key="frame" x="20" y="130" width="252" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="11o-bs-HKK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@tesrmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pr2-Bg-0ZA">
+                                        <rect key="frame" x="20" y="158" width="252" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="VAM-V3-eby"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="rXj-iS-zPs" firstAttribute="top" secondItem="tlL-Wj-NSL" secondAttribute="top" constant="30" id="44d-IX-aXR"/>
+                                    <constraint firstAttribute="trailing" secondItem="43w-eo-Gej" secondAttribute="trailing" constant="8" id="652-5h-dtX"/>
                                     <constraint firstItem="LZD-aS-KpC" firstAttribute="top" secondItem="tlL-Wj-NSL" secondAttribute="top" id="7uk-gn-1Ii"/>
+                                    <constraint firstItem="rXj-iS-zPs" firstAttribute="leading" secondItem="tlL-Wj-NSL" secondAttribute="leading" constant="20" id="Dui-WN-Xs9"/>
+                                    <constraint firstItem="Pr2-Bg-0ZA" firstAttribute="top" secondItem="43w-eo-Gej" secondAttribute="bottom" constant="8" id="IWT-kQ-1rq"/>
+                                    <constraint firstItem="43w-eo-Gej" firstAttribute="top" secondItem="rXj-iS-zPs" secondAttribute="bottom" constant="20" id="UQA-D1-O2B"/>
                                     <constraint firstItem="LZD-aS-KpC" firstAttribute="leading" secondItem="tlL-Wj-NSL" secondAttribute="leading" id="W76-V0-4mm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pr2-Bg-0ZA" secondAttribute="trailing" constant="8" id="bBF-eI-N6Y"/>
+                                    <constraint firstItem="43w-eo-Gej" firstAttribute="leading" secondItem="tlL-Wj-NSL" secondAttribute="leading" constant="20" id="oeO-mM-Pee"/>
                                     <constraint firstAttribute="width" constant="280" id="pL1-E5-vtd"/>
+                                    <constraint firstItem="Pr2-Bg-0ZA" firstAttribute="leading" secondItem="tlL-Wj-NSL" secondAttribute="leading" constant="20" id="tZ3-f0-Xmj"/>
                                     <constraint firstAttribute="trailing" secondItem="LZD-aS-KpC" secondAttribute="trailing" id="yZC-hI-y5w"/>
                                 </constraints>
                             </view>
@@ -759,6 +792,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="default_avata" width="128" height="128"/>
         <image name="launcherbg" width="502" height="878"/>
         <image name="nav_header" width="720" height="1280"/>
         <image name="nav_icon" width="90" height="90"/>
