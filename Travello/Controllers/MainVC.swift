@@ -130,7 +130,7 @@ class MainVC: UIViewController {
             tranparent_overlay.isHidden = false
             
         }else{
-            left_nav_leading_constraint.constant = -330
+            left_nav_leading_constraint.constant = -300
             
         }
         

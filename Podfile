@@ -13,4 +13,5 @@ target 'Travello' do
     pod 'FBSDKLoginKit'
     pod 'GoogleMaps'
     pod 'iOSDropDown'
+    pod 'DatePickerDialog'
 end

@@ -9,6 +9,7 @@
 import Foundation
 
 typealias Completion = (AnyObject)->()
+public let MAP_API_KEY: String = "AIzaSyApxjORC8CP69rDjQYMagJPky2KNxxjq8s"
 struct Constants {
     static let VERSION: String = ""
     static let EMAIL_PROVIDER = "email_provider"
