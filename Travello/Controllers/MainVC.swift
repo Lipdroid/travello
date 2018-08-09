@@ -156,4 +156,12 @@ class MainVC: UIViewController {
     
     @IBAction func after_click_browse(_ sender: Any) {
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.MAINVIEW_TO_POSTVIEW{
+            if let dest: PostVC = segue.destination as? PostVC{
+                dest.mUserObj = self.mUserObj
+            }
+        }
+    }
 }

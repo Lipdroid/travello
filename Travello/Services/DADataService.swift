@@ -14,12 +14,16 @@ class DADataService{
     static let instance = DADataService()
     private let _REF_BASE = DB_BASE
     private let _REF_USER = DB_BASE.child("user")
+    private let _REF_CAR = DB_BASE.child("car")
     
     var REF_BASE: FIRDatabaseReference{
         return _REF_BASE
     }
     var REF_USER: FIRDatabaseReference{
         return _REF_USER
+    }
+    var REF_CAR: FIRDatabaseReference{
+        return _REF_CAR
     }
     
     func getUserFromFirebaseDB(uid: String,callback: @escaping Completion){
@@ -61,5 +65,26 @@ class DADataService{
                     "provider":userObject.provider]
         
         REF_USER.child(uid).updateChildValues(user as Any as! [AnyHashable : Any])
+    }
+    
+    func createFirebaseDBCar(uid: String, carObject: CarObject){
+        let car = ["available_seats": carObject.available_seats,
+                    "dates": carObject.dates,
+                    "description": carObject.description,
+                    "destination": carObject.destination,
+                    "email":carObject.email,
+                    "gas_fare":carObject.gas_fare,
+                    "id":carObject.id,
+                    "image":carObject.image,
+                    "is_plan_a_trip":carObject.is_plan_a_trip,
+                    "liked": carObject.liked,
+                    "name": carObject.name,
+                    "origin":carObject.origin,
+                    "phone_no":carObject.phone_no,
+                    "rating":carObject.rating,
+                    "user_id":carObject.user_id,
+                    "usertype":carObject.usertype]
+        
+        REF_CAR.child(uid).updateChildValues(car as Any as! [AnyHashable : Any])
     }
 }
