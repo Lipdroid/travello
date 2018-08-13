@@ -59,7 +59,7 @@ class PostVC: UIViewController {
             return
         }
         
-        let carObj = CarObject(available_seats: seats_txt, dates: date_txt, description: detail_txt, destination: to_city_txt, email: mUserObj.email!, gas_fare: gas_fare_txt, id: mUserObj.id!, image: mUserObj.imageUrl!, is_plan_a_trip: "false", liked: "0", name: mUserObj.name!, origin: from_city_txt, phone_no:mUserObj.phoneNumber!, rating: "", user_id: mUserObj.id!, usertype: "normal")
+        let carObj = CarObject(available_seats: seats_txt, dates: date_txt, description: detail_txt, destination: to_city_txt, email: mUserObj.email!, gas_fare: gas_fare_txt, id: mUserObj.id!, image: mUserObj.imageUrl!, is_plan_a_trip: false, liked: 0, name: mUserObj.name!, origin: from_city_txt, phone_no:mUserObj.phoneNumber!, rating: "", user_id: mUserObj.id!, usertype: "normal")
         //post the carObject
         DADataService.instance.createFirebaseDBCar(uid: mUserObj.id!,carObject: carObj)
         //Show success message

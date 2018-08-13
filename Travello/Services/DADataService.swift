@@ -68,7 +68,7 @@ class DADataService{
     }
     
     func createFirebaseDBCar(uid: String, carObject: CarObject){
-        let car = ["available_seats": carObject.available_seats,
+        let car = ["avaiable_seats": carObject.available_seats,
                     "dates": carObject.dates,
                     "description": carObject.description,
                     "destination": carObject.destination,
@@ -83,7 +83,7 @@ class DADataService{
                     "phone_no":carObject.phone_no,
                     "rating":carObject.rating,
                     "user_id":carObject.user_id,
-                    "usertype":carObject.usertype]
+                    "usertype":carObject.usertype] as [String : Any]
         
         REF_CAR.child(uid).updateChildValues(car as Any as! [AnyHashable : Any])
     }

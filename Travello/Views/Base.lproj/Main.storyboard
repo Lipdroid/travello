@@ -892,6 +892,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="background" destination="fMA-yH-qLZ" id="3wv-hj-YHy"/>
                                             <outlet property="date" destination="WCy-M5-MDx" id="CfW-Ml-6dm"/>
                                             <outlet property="email" destination="jmW-Jy-U5M" id="mci-hG-Azr"/>
                                             <outlet property="fare" destination="Bc7-95-t8d" id="C4d-nm-HhX"/>

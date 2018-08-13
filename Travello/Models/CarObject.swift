@@ -8,25 +8,25 @@
 
 import Foundation
 class CarObject{
-    private(set) public var available_seats: String!
-    private(set) public var dates: String!
-    private(set) public var description: String!
-    private(set) public var destination: String!
-    private(set) public var email: String!
-    private(set) public var gas_fare: String!
-    private(set) public var id: String!
-    private(set) public var image: String!
-    private(set) public var is_plan_a_trip: String!
-    private(set) public var liked: String!
-    private(set) public var name: String!
-    private(set) public var origin: String!
-    private(set) public var phone_no: String!
-    private(set) public var rating: String!
-    private(set) public var user_id: String!
-    private(set) public var usertype: String!
+    public var available_seats: String!
+    public var dates: String!
+    public var description: String!
+    public var destination: String!
+    public var email: String!
+    public var gas_fare: String!
+    public var id: String!
+    public var image: String!
+    public var is_plan_a_trip: Bool!
+    public var liked: Int!
+    public var name: String!
+    public var origin: String!
+    public var phone_no: String!
+    public var rating: String!
+    public var user_id: String!
+    public var usertype: String!
     
     init(available_seats: String,dates: String,description: String,destination: String,email: String,gas_fare: String,
-         id: String,image: String,is_plan_a_trip: String,liked: String,
+         id: String,image: String,is_plan_a_trip: Bool,liked: Int,
          name: String,origin: String,phone_no: String,rating: String,
          user_id: String,usertype: String) {
         
