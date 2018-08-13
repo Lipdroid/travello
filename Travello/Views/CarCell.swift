@@ -17,7 +17,8 @@ class CarCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var pro_image: CircleImageView!
-
+    @IBOutlet weak var background: UIView!
+    
     func updateViews(carObj: CarObject){
         fromAddress.text = carObj.origin
         toAddress.text = carObj.destination
@@ -28,7 +29,18 @@ class CarCell: UITableViewCell {
         email.text = carObj.email
         //show image from image url
         if let imageUrl = carObj.image{
-            pro_image.imageFromServerURL(urlString: imageUrl, defaultImage: "default_avata")
+            if(imageUrl == "" || !imageUrl.hasPrefix("https")){
+                pro_image.image = UIImage(named: "default_avata")
+            }else{
+                pro_image.imageFromServerURL(urlString: imageUrl, defaultImage: "default_avata")
+            }
+        }
+        
+        if carObj.is_plan_a_trip{
+            background.backgroundColor = UIColor(hexColor: "DD6B55")
+        }else{
+            background.backgroundColor = UIColor(hexColor: "0097A7")
         }
     }
 }
+
