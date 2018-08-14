@@ -113,6 +113,8 @@ class MainVC: UIViewController {
     @objc func btn_save_pressed(){
         //close menu
         toggleLeftMenu()
+        //perform segue
+        performSegue(withIdentifier: Constants.MAINVIEW_TO_SAVEVIEW, sender: nil)
     }
 
     override func didReceiveMemoryWarning() {

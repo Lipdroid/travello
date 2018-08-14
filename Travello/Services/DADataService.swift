@@ -15,7 +15,8 @@ class DADataService{
     private let _REF_BASE = DB_BASE
     private let _REF_USER = DB_BASE.child("user")
     private let _REF_CAR = DB_BASE.child("car")
-    
+    private let _REF_SAVE = DB_BASE.child("save")
+
     var REF_BASE: FIRDatabaseReference{
         return _REF_BASE
     }
@@ -24,6 +25,9 @@ class DADataService{
     }
     var REF_CAR: FIRDatabaseReference{
         return _REF_CAR
+    }
+    var REF_SAVE: FIRDatabaseReference{
+        return _REF_SAVE
     }
     
     func getUserFromFirebaseDB(uid: String,callback: @escaping Completion){

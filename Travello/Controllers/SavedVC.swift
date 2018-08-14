@@ -1,63 +1,46 @@
 //
-//  BrowseVC.swift
+//  SavedVC.swift
 //  Travello
 //
-//  Created by Md Munir Hossain on 8/7/18.
+//  Created by Md Munir Hossain on 8/14/18.
 //  Copyright © 2018 Md Munir Hossain. All rights reserved.
 //
 
 import UIKit
 import Firebase
-import iOSDropDown
-
-class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class SavedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     var trips = [CarObject]()
     @IBAction func afterClickBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    @IBAction func afterClickSearch(_ sender: Any) {
-        getAllTripData()
-    }
-    private func filter(){
-        if trips.count > 0{
-            var filter_trips = [CarObject]()
-            for i in 0 ..< trips.count {
-                let trip = trips[i]
-                if trip.origin == from_city_txt{
-                    filter_trips.append(trip)
-                }
-            }
-            trips = filter_trips
-            tableView.reloadData()
-        }
-    }
-    @IBOutlet weak var from_address_dropdown: DropDown!
-    @IBOutlet weak var to_address_dropdown: DropDown!
-    var from_city_txt: String = "София"
-    var to_city_txt: String = "София"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpDropdowns()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        getAllSavedData()    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trips.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "CarCell") as? CarCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SavedCell") as? SavedCell{
             if let trip = self.trips[indexPath.row] as? CarObject{
                 cell.updateViews(carObj: trip)
                 return cell;
             }else{
-                return CarCell()
+                return SavedCell()
             }
         }else{
-            return CarCell()
+            return SavedCell()
         }
     }
     
@@ -67,8 +50,8 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         return 226
     }
     
-    private func getAllTripData(){
-        DADataService.instance.REF_CAR.observe(.value, with: {(snapshot) in
+    private func getAllSavedData(){
+        DADataService.instance.REF_SAVE.observe(.value, with: {(snapshot) in
             print("BrowseVC: finish getting car trip data")
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot]{
                 print("trips count:\(snapshots.count)")
@@ -79,7 +62,7 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                         }
                     }
                 }
-                self.filter()
+                self.tableView.reloadData()
             }
         })
     }
@@ -169,24 +152,5 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         }
         return carObject
     }
-    
-    private func setUpDropdowns(){
-        // The list of array to display. Can be changed dynamically
-        from_address_dropdown.optionArray = cities
-        // The the Closure returns Selected Index and String
-        //get location from string city name
-        from_address_dropdown.didSelect{
-            (selectedText , index ,id) in
-            self.from_city_txt = selectedText;            
-            
-        }
-        
-        // The list of array to display. Can be changed dynamically
-        to_address_dropdown.optionArray = cities
-        // The the Closure returns Selected Index and String
-        to_address_dropdown.didSelect{
-            (selectedText , index ,id) in
-            self.to_city_txt = selectedText;
-        }
-    }
+
 }

@@ -21,6 +21,7 @@ struct Constants {
     static let LOGINVIEW_TO_MAINVIEW = "toMainVCSegue"
     static let SIGNUP_TO_MAINVIEW = "signUpToMainVCSegue"
     static let MAINVIEW_TO_POSTVIEW = "mainVcToPostVC"
+    static let MAINVIEW_TO_SAVEVIEW = "toSavedVC"
 
 }
 

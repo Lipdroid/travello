@@ -140,7 +140,9 @@ class PostVC: UIViewController {
                     //zoom to that location
                     self.googleMap.camera = GMSCameraPosition(target: location, zoom: Float(MAP_ZOOM_LEVEL), bearing: 0, viewingAngle: 0)
                     self.toLocation = location
-                    self.googleMap.drawPolygon(from: self.fromLocation!, to: self.toLocation!)
+                    if(self.fromLocation != nil && self.toLocation != nil){
+                        self.googleMap.drawPolygon(from: self.fromLocation!, to: self.toLocation!)
+                    }
                 }
             }
         }

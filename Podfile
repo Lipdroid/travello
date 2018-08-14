@@ -14,4 +14,5 @@ target 'Travello' do
     pod 'GoogleMaps'
     pod 'iOSDropDown'
     pod 'DatePickerDialog'
+    pod 'Cosmos', '~> 16.0'
 end

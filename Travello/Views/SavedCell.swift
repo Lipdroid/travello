@@ -1,14 +1,14 @@
 //
-//  CarCell.swift
+//  SavedCell.swift
 //  Travello
 //
-//  Created by Md Munir Hossain on 8/10/18.
+//  Created by Md Munir Hossain on 8/14/18.
 //  Copyright © 2018 Md Munir Hossain. All rights reserved.
 //
 
 import UIKit
 import Cosmos
-class CarCell: UITableViewCell {
+class SavedCell: UITableViewCell {
     @IBOutlet weak var fromAddress: UILabel!
     @IBOutlet weak var toAddress: UILabel!
     @IBOutlet weak var date: UILabel!
@@ -19,7 +19,7 @@ class CarCell: UITableViewCell {
     @IBOutlet weak var pro_image: CircleImageView!
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var rating: CosmosView!
-    @IBOutlet weak var btn_like: UIImageView!
+    @IBOutlet weak var phone: UILabel!
     
     func updateViews(carObj: CarObject){
         fromAddress.text = carObj.origin
@@ -48,12 +48,9 @@ class CarCell: UITableViewCell {
             rating.rating = Double(rate)
         }
         
-        if(carObj.liked == 1){
-            btn_like.image = UIImage(named:"liked")
-        }else{
-            btn_like.image = UIImage(named:"like")
-        }
+        phone.text = carObj.phone_no
         
     }
 }
+
 
