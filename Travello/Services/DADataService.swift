@@ -91,4 +91,30 @@ class DADataService{
         
         REF_CAR.child(uid).updateChildValues(car as Any as! [AnyHashable : Any])
     }
+    
+    func createFirebaseDBSave(uid: String, carObject: CarObject){
+        let car = ["avaiable_seats": carObject.available_seats,
+                   "dates": carObject.dates,
+                   "description": carObject.description,
+                   "destination": carObject.destination,
+                   "email":carObject.email,
+                   "gas_fare":carObject.gas_fare,
+                   "id":carObject.id,
+                   "image":carObject.image,
+                   "is_plan_a_trip":carObject.is_plan_a_trip,
+                   "liked": carObject.liked,
+                   "name": carObject.name,
+                   "origin":carObject.origin,
+                   "phone_no":carObject.phone_no,
+                   "rating":carObject.rating,
+                   "user_id":carObject.user_id,
+                   "usertype":carObject.usertype] as [String : Any]
+        
+        REF_SAVE.child(uid).updateChildValues(car as Any as! [AnyHashable : Any])
+    }
+    
+    func updateFirebaseDBCarLike(uid: String, carObject: CarObject){
+        let liked = ["liked": carObject.liked] as [String : Any]
+        REF_CAR.child(uid).updateChildValues(liked as Any as! [AnyHashable : Any])
+    }
 }

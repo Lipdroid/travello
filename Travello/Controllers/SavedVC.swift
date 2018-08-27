@@ -58,7 +58,9 @@ class SavedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 for snap in snapshots{
                     if let trip_snap = snap.value as? Dictionary<String, AnyObject>{
                         if let trip = self.parseTripSnap(tripSnapDict: trip_snap) as? CarObject{
-                            self.trips.append(trip)
+                            if(trip.liked == 1){
+                                self.trips.append(trip)
+                            }
                         }
                     }
                 }

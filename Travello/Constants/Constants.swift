@@ -22,7 +22,7 @@ struct Constants {
     static let SIGNUP_TO_MAINVIEW = "signUpToMainVCSegue"
     static let MAINVIEW_TO_POSTVIEW = "mainVcToPostVC"
     static let MAINVIEW_TO_SAVEVIEW = "toSavedVC"
-
+    static let SHOW_TO_DETAILS = "showDetails"
 }
 
 let cities = ["София",

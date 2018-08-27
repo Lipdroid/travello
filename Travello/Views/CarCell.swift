@@ -8,6 +8,10 @@
 
 import UIKit
 import Cosmos
+protocol CarcellDelegate {
+    func didLikeTapped(carObj: CarObject);
+    func didCallTapped(phoneNo: String);
+}
 class CarCell: UITableViewCell {
     @IBOutlet weak var fromAddress: UILabel!
     @IBOutlet weak var toAddress: UILabel!
@@ -20,8 +24,11 @@ class CarCell: UITableViewCell {
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var btn_like: UIImageView!
+    var carObject: CarObject?
+    var carcellDelegate: CarcellDelegate?
     
     func updateViews(carObj: CarObject){
+        carObject = carObj
         fromAddress.text = carObj.origin
         toAddress.text = carObj.destination
         date.text = carObj.dates
@@ -54,6 +61,24 @@ class CarCell: UITableViewCell {
             btn_like.image = UIImage(named:"like")
         }
         
+        let btn_like_tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didLikeTapped(tapGestureRecognizer:)))
+        btn_like.isUserInteractionEnabled = true
+        btn_like.addGestureRecognizer(btn_like_tapGestureRecognizer)
+        
+
+    }
+    
+    @objc func didLikeTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        carcellDelegate?.didLikeTapped(carObj: carObject!)
+    }
+    
+    @IBAction func didCallTapped(_ sender: Any) {
+        if let phone = carObject?.phone_no {
+            if phone != ""{
+                carcellDelegate?.didCallTapped(phoneNo: phone)
+            }
+        }
     }
 }
 

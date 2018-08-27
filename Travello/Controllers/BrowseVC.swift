@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 import iOSDropDown
 
-class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate,CarcellDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     var trips = [CarObject]()
+    var selectedTrip: CarObject?
     @IBAction func afterClickBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -48,10 +50,26 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trips.count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedTrip = trips[indexPath.row]
+        //perform segue
+        performSegue(withIdentifier: Constants.SHOW_TO_DETAILS, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.SHOW_TO_DETAILS{
+            if let dest: TripDetailsVC = segue.destination as? TripDetailsVC{
+                dest.trip = self.selectedTrip
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CarCell") as? CarCell{
             if let trip = self.trips[indexPath.row] as? CarObject{
                 cell.updateViews(carObj: trip)
+                cell.carcellDelegate = self
                 return cell;
             }else{
                 return CarCell()
@@ -72,6 +90,7 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             print("BrowseVC: finish getting car trip data")
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot]{
                 print("trips count:\(snapshots.count)")
+                self.trips.removeAll()
                 for snap in snapshots{
                     if let trip_snap = snap.value as? Dictionary<String, AnyObject>{
                         if let trip = self.parseTripSnap(tripSnapDict: trip_snap) as? CarObject{
@@ -189,4 +208,35 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             self.to_city_txt = selectedText;
         }
     }
+    func didLikeTapped(carObj: CarObject) {
+        //TODO: update the item
+        if let index = trips.index(where: {$0.id == carObj.id}) {
+            // do something with index
+            if(carObj.liked == 1){
+                trips[index].liked = 0
+            }else{
+                trips[index].liked = 1
+            }
+            //TODO: update the imageview
+            tableView.reloadData()
+            //TODO: update the car objcet in firebase
+            DADataService.instance.updateFirebaseDBCarLike(uid: trips[index].id,carObject: trips[index])
+            //TODO: add it to save
+            DADataService.instance.createFirebaseDBSave(uid: trips[index].id,carObject: trips[index])
+        }
+        
+    }
+    
+    func didCallTapped(phoneNo: String) {
+        if let url = URL(string: "tel://\(phoneNo)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+
+    }
+    
+    
 }
