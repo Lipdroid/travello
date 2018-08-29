@@ -23,6 +23,7 @@ struct Constants {
     static let MAINVIEW_TO_POSTVIEW = "mainVcToPostVC"
     static let MAINVIEW_TO_SAVEVIEW = "toSavedVC"
     static let SHOW_TO_DETAILS = "showDetails"
+    static let SAVE_TO_DETAILS = "saveToDetails"
 }
 
 let cities = ["София",

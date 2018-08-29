@@ -21,3 +21,4 @@ class CircleImageView: UIImageView {
         self.clipsToBounds = true
     }
 }
+

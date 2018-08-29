@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 class SavedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var selectedTrip: CarObject?
     @IBOutlet weak var tableView: UITableView!
     var trips = [CarObject]()
     @IBAction func afterClickBack(_ sender: Any) {
@@ -27,6 +28,19 @@ class SavedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedTrip = trips[indexPath.row]
+        //perform segue
+        performSegue(withIdentifier: Constants.SAVE_TO_DETAILS, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.SAVE_TO_DETAILS{
+            if let dest: TripDetailsVC = segue.destination as? TripDetailsVC{
+                dest.trip = self.selectedTrip
+            }
+        }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trips.count
