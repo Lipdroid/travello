@@ -97,6 +97,10 @@ class MainVC: UIViewController {
     @objc func btn_rides_pressed(){
         //close menu
         toggleLeftMenu()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "browseVC") as! BrowseVC
+        self.present(newViewController, animated: true, completion: nil)
+
     }
     @objc func btn_trip_plan_pressed(){
         //close menu
