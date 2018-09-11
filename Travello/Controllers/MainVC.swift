@@ -105,6 +105,10 @@ class MainVC: UIViewController {
     @objc func btn_trip_plan_pressed(){
         //close menu
         toggleLeftMenu()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "tripPlan") as! PlanTripVC
+        self.present(newViewController, animated: true, completion: nil)
+        
     }
     @objc func btn_friends_pressed(){
         //close menu

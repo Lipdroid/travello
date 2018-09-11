@@ -15,4 +15,5 @@ target 'Travello' do
     pod 'iOSDropDown'
     pod 'DatePickerDialog'
     pod 'Cosmos', '~> 16.0'
+    pod 'DLRadioButton', '~> 1.4'
 end
