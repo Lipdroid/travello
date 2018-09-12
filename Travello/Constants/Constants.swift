@@ -24,6 +24,9 @@ struct Constants {
     static let MAINVIEW_TO_SAVEVIEW = "toSavedVC"
     static let SHOW_TO_DETAILS = "showDetails"
     static let SAVE_TO_DETAILS = "saveToDetails"
+    static let MAINVIEW_TO_PLAN = "planTripView"
+    static let PlAN_TO_MAP = "planToMapView"
+
 }
 
 let cities = ["София",

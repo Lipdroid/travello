@@ -105,9 +105,7 @@ class MainVC: UIViewController {
     @objc func btn_trip_plan_pressed(){
         //close menu
         toggleLeftMenu()
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "tripPlan") as! PlanTripVC
-        self.present(newViewController, animated: true, completion: nil)
+        performSegue(withIdentifier: Constants.MAINVIEW_TO_PLAN, sender: nil)
         
     }
     @objc func btn_friends_pressed(){
@@ -170,6 +168,10 @@ class MainVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.MAINVIEW_TO_POSTVIEW{
             if let dest: PostVC = segue.destination as? PostVC{
+                dest.mUserObj = self.mUserObj
+            }
+        }else if segue.identifier == Constants.MAINVIEW_TO_PLAN{
+            if let dest: PlanTripVC = segue.destination as? PlanTripVC{
                 dest.mUserObj = self.mUserObj
             }
         }
