@@ -16,4 +16,5 @@ target 'Travello' do
     pod 'DatePickerDialog'
     pod 'Cosmos', '~> 16.0'
     pod 'DLRadioButton', '~> 1.4'
+    pod 'XLPagerTabStrip', :git => 'https://github.com/KelvinJin/XLPagerTabStrip', :branch => 'swift3'
 end

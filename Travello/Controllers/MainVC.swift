@@ -111,10 +111,16 @@ class MainVC: UIViewController {
     @objc func btn_friends_pressed(){
         //close menu
         toggleLeftMenu()
+        ISFROM_CHAT = false
+        performSegue(withIdentifier: Constants.MAINVIEW_TO_CONTACT, sender: nil)
     }
     @objc func btn_chat_pressed(){
         //close menu
         toggleLeftMenu()
+        ISFROM_CHAT = true
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "child1") as! FriendVC
+        self.present(newViewController, animated: true, completion: nil)
     }
     @objc func btn_save_pressed(){
         //close menu
@@ -172,6 +178,10 @@ class MainVC: UIViewController {
             }
         }else if segue.identifier == Constants.MAINVIEW_TO_PLAN{
             if let dest: PlanTripVC = segue.destination as? PlanTripVC{
+                dest.mUserObj = self.mUserObj
+            }
+        }else if segue.identifier == Constants.MAINVIEW_TO_CONTACT{
+            if let dest: ContactVC = segue.destination as? ContactVC{
                 dest.mUserObj = self.mUserObj
             }
         }

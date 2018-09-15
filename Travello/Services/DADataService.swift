@@ -16,6 +16,7 @@ class DADataService{
     private let _REF_USER = DB_BASE.child("user")
     private let _REF_CAR = DB_BASE.child("car")
     private let _REF_SAVE = DB_BASE.child("save")
+    private let _REF_FRIEND = DB_BASE.child("friend")
 
     var REF_BASE: FIRDatabaseReference{
         return _REF_BASE
@@ -28,6 +29,9 @@ class DADataService{
     }
     var REF_SAVE: FIRDatabaseReference{
         return _REF_SAVE
+    }
+    var REF_FRIEND: FIRDatabaseReference{
+        return _REF_FRIEND
     }
     
     func getUserFromFirebaseDB(uid: String,callback: @escaping Completion){
@@ -52,7 +56,7 @@ class DADataService{
                 }
             
             }else{
-                print("firebase error")
+                print(snapshot)
             }
         })
     }
@@ -116,5 +120,10 @@ class DADataService{
     func updateFirebaseDBCarLike(uid: String, carObject: CarObject){
         let liked = ["liked": carObject.liked] as [String : Any]
         REF_CAR.child(uid).updateChildValues(liked as Any as! [AnyHashable : Any])
+    }
+    
+    func addToFriendList(currentUserID: String,addedUserID: String){
+        REF_FRIEND.child(currentUserID).childByAutoId().setValue(addedUserID)
+        REF_FRIEND.child(addedUserID).childByAutoId().setValue(currentUserID)
     }
 }
