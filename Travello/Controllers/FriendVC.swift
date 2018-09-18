@@ -16,9 +16,11 @@ class FriendVC: UIViewController,IndicatorInfoProvider,UITableViewDataSource,UIT
     var selectedItem: UserObject?
     var mUserObj: UserObject?
     var friends = [String]()
+    var roomID:String?
+    var idReceiver:String?
 
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Child 1",image: UIImage(named:"ic_tab_person"))
+        return IndicatorInfo(title: "",image: UIImage(named:"ic_tab_person"))
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +64,9 @@ class FriendVC: UIViewController,IndicatorInfoProvider,UITableViewDataSource,UIT
                         self.friends.append(friend_snap)
                     }
                 }
-                
+                self.getAllFriendsData(friendsIds: self.friends)
+
             }
-            self.getAllFriendsData(friendsIds: self.friends)
         })
     }
     @IBAction func afterClickBack(_ sender: Any) {
@@ -90,12 +92,23 @@ class FriendVC: UIViewController,IndicatorInfoProvider,UITableViewDataSource,UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedItem = users[indexPath.row]
-        //perform segue
-//        performSegue(withIdentifier: Constants.SHOW_TO_DETAILS, sender: nil)
+        //get the room id
+        if let currentUserID = mUserObj?.id, let friendID = selectedItem?.id{
+            if ((currentUserID.compare(friendID).rawValue) > 0){
+                roomID = "\(friendID)\(currentUserID)".toBase64()!
+                print(roomID ?? "Can not parse roomid")
+            }else{
+                roomID = "\(currentUserID)\(friendID)".toBase64()!
+                print(roomID ?? "Can not parse roomid")
+            }
+            idReceiver = selectedItem?.id
+            //perform segue
+            performSegue(withIdentifier: Constants.FRIENDS_TO_CHAT, sender: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserChatCell") as? UserChatCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserFriendCell") as? UserFriendCell{
             if let user = self.users[indexPath.row] as? UserObject{
                 cell.updateCell(userData: user)
                 return cell;
@@ -112,12 +125,21 @@ class FriendVC: UIViewController,IndicatorInfoProvider,UITableViewDataSource,UIT
         refreshControl.addTarget(self, action:
             #selector(self.handleRefresh(_:)),
                                  for: UIControlEvents.valueChanged)
-        refreshControl.tintColor = UIColor.red
+        refreshControl.tintColor = UIColor.gray
         
         return refreshControl
     }()
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.getFriendsByUserID(uid: (self.mUserObj?.id)!)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.FRIENDS_TO_CHAT{
+            if let dest: ChatVC = segue.destination as? ChatVC{
+                dest.roomID = self.roomID
+                dest.idReceiver = self.idReceiver
+                dest.recieverObj = selectedItem
+            }
+        }
     }
 }

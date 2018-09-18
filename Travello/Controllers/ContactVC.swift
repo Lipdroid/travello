@@ -11,30 +11,27 @@ import XLPagerTabStrip
 
 class ContactVC: ButtonBarPagerTabStripViewController {
     
-    let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
     var mUserObj: UserObject! = nil
+    
     @IBAction func afterClickBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // change selected bar color
-        settings.style.buttonBarBackgroundColor = UIColor(hexColor: "ff6861")
-        settings.style.buttonBarItemBackgroundColor = UIColor(hexColor: "ff6861")
-        settings.style.selectedBarBackgroundColor = purpleInspireColor
+        settings.style.buttonBarBackgroundColor = UIColor(hexColor: "55C4D9")
+        settings.style.buttonBarItemBackgroundColor = UIColor(hexColor: "55C4D9")
+        settings.style.selectedBarBackgroundColor = .white
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 2.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = UIColor.white
-        settings.style.buttonBarItemsShouldFillAvailiableWidth = true
+        settings.style.buttonBarItemTitleColor = .white
+        settings.style.buttonBarItemsShouldFillAvailableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-            guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = UIColor.white
-            newCell?.label.textColor = self?.purpleInspireColor
-        }
         
+        super.viewDidLoad()
+        
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {

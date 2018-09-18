@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class UserChatCell: UITableViewCell {
+class UserFriendCell: UITableViewCell {
     @IBOutlet weak var pro_image: CircleImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var time: UILabel!

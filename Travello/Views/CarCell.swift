@@ -11,6 +11,7 @@ import Cosmos
 protocol CarcellDelegate {
     func didLikeTapped(carObj: CarObject);
     func didCallTapped(phoneNo: String);
+    func didChatTapped(id: String);
 }
 class CarCell: UITableViewCell {
     @IBOutlet weak var fromAddress: UILabel!
@@ -24,6 +25,7 @@ class CarCell: UITableViewCell {
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var btn_like: UIImageView!
+    @IBOutlet weak var btn_chat: UIImageView!
     var carObject: CarObject?
     var carcellDelegate: CarcellDelegate?
     
@@ -65,12 +67,20 @@ class CarCell: UITableViewCell {
         btn_like.isUserInteractionEnabled = true
         btn_like.addGestureRecognizer(btn_like_tapGestureRecognizer)
         
+        let btn_chat_tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didChatTapped(tapGestureRecognizer:)))
+        btn_chat.isUserInteractionEnabled = true
+        btn_chat.addGestureRecognizer(btn_chat_tapGestureRecognizer)
 
     }
     
     @objc func didLikeTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         carcellDelegate?.didLikeTapped(carObj: carObject!)
+    }
+    
+    @objc func didChatTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        carcellDelegate?.didChatTapped(id: (carObject?.id)!)
     }
     
     @IBAction func didCallTapped(_ sender: Any) {

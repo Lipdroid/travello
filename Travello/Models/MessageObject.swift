@@ -9,10 +9,10 @@
 import Foundation
 
 class MessageObject{
-    private var idSender: String!
-    private var idReceiver: String!
-    private var timestamp: Double!
-    private var text: String!
+    var idSender: String!
+    var idReceiver: String!
+    var timestamp: Double!
+    var text: String!
     
     init(idSender: String,idReceiver: String,timestamp: Double,text: String) {
         self.idSender = idSender

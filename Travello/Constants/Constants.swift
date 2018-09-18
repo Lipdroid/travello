@@ -27,6 +27,10 @@ struct Constants {
     static let MAINVIEW_TO_PLAN = "planTripView"
     static let PlAN_TO_MAP = "planToMapView"
     static let MAINVIEW_TO_CONTACT = "toContactPage"
+    static let FRIENDS_TO_CHAT = "toChatPage"
+    static let BROWSE_TO_CHAT = "browseToChatPage"
+    static let SAVE_TO_CHAT = "saveToChatPage"
+    
 }
 
 let cities = ["София",

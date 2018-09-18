@@ -17,6 +17,7 @@ class DADataService{
     private let _REF_CAR = DB_BASE.child("car")
     private let _REF_SAVE = DB_BASE.child("save")
     private let _REF_FRIEND = DB_BASE.child("friend")
+    private let _REF_MESSAGE = DB_BASE.child("message")
 
     var REF_BASE: FIRDatabaseReference{
         return _REF_BASE
@@ -32,6 +33,10 @@ class DADataService{
     }
     var REF_FRIEND: FIRDatabaseReference{
         return _REF_FRIEND
+    }
+    
+    var REF_MESSAGE: FIRDatabaseReference{
+        return _REF_MESSAGE
     }
     
     func getUserFromFirebaseDB(uid: String,callback: @escaping Completion){
@@ -73,6 +78,15 @@ class DADataService{
                     "provider":userObject.provider]
         
         REF_USER.child(uid).updateChildValues(user as Any as! [AnyHashable : Any])
+    }
+    
+    func createMessage(roomID: String, messageObj: MessageObject){
+        let message = ["idSender": messageObj.idSender,
+                       "idReceiver": messageObj.idReceiver,
+                       "timestamp": messageObj.timestamp,
+                       "text": messageObj.text] as [String : Any]
+        
+        REF_MESSAGE.child(roomID).childByAutoId().setValue(message as Any as! [AnyHashable : Any])
     }
     
     func createFirebaseDBCar(uid: String, carObject: CarObject){

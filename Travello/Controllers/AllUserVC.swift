@@ -17,7 +17,7 @@ class AllUserVC: UIViewController,IndicatorInfoProvider,UITableViewDataSource,UI
     var mUserObj: UserObject?
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Child 2",image: UIImage(named:"ic_tab_group"))
+        return IndicatorInfo(title: "",image: UIImage(named:"ic_tab_group"))
     }
 
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class AllUserVC: UIViewController,IndicatorInfoProvider,UITableViewDataSource,UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserChatCell") as? UserChatCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserFriendCell") as? UserFriendCell{
             if let user = self.users[indexPath.row] as? UserObject{
                 cell.updateCell(userData: user)
                 return cell;

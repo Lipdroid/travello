@@ -14,7 +14,12 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Carce
     
     @IBOutlet weak var tableView: UITableView!
     var trips = [CarObject]()
+    var friends = [String]()
     var selectedTrip: CarObject?
+    var roomID:String?
+    var idReceiver:String?
+    var selectedUser:UserObject?
+    
     @IBAction func afterClickBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -38,6 +43,7 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Carce
     @IBOutlet weak var to_address_dropdown: DropDown!
     var from_city_txt: String = "София"
     var to_city_txt: String = "София"
+    var mUserObj: UserObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +52,38 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Carce
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        
+        //get the current user
+        if let user = FIRAuth.auth()?.currentUser {
+            let uid = user.uid
+            //get the user data from firebase
+            DADataService.instance.getUserFromFirebaseDB(uid: uid){
+                (response) in
+                if let user = response as? UserObject{
+                    self.mUserObj = user
+                    self.getFriendsByUserID(uid: (self.mUserObj?.id)!)
+                }
+            }
+        } else {
+            //User Not logged in
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func getFriendsByUserID(uid: String){
+        DADataService.instance.REF_FRIEND.child(uid).observe(.value, with: {(snapshot) in
+            print("BrowseVC: getting all friends Data")
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot]{
+                print("friends count:\(snapshots.count)")
+                self.friends.removeAll()
+                for snap in snapshots{
+                    if let friend_snap = snap.value as? String{
+                        self.friends.append(friend_snap)
+                    }
+                }
+                
+            }
+        })
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trips.count
@@ -61,6 +99,12 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Carce
         if segue.identifier == Constants.SHOW_TO_DETAILS{
             if let dest: TripDetailsVC = segue.destination as? TripDetailsVC{
                 dest.trip = self.selectedTrip
+            }
+        }else if segue.identifier == Constants.BROWSE_TO_CHAT{
+            if let dest: ChatVC = segue.destination as? ChatVC{
+                dest.roomID = self.roomID
+                dest.idReceiver = self.idReceiver
+                dest.recieverObj = selectedUser
             }
         }
     }
@@ -237,6 +281,40 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Carce
         }
 
     }
+   
+    func didChatTapped(id: String) {
+        print(id)
+        if(friends.count>0){
+            DADataService.instance.getUserFromFirebaseDB(uid: id){
+                (response) in
+                if let user = response as? UserObject{
+                    self.selectedUser = user
+                    if(!self.friends.contains(id)){
+                        self.addFriend(selectedItem: user)
+                    }
+                    self.getRoomIDAndPerformChatSegue(selectedItem: user)
+                }
+            }
+        }
+    }
     
-    
+
+    func getRoomIDAndPerformChatSegue(selectedItem: UserObject) {
+        //get the room id
+        if let currentUserID = mUserObj?.id, let friendID = selectedItem.id{
+            if ((currentUserID.compare(friendID).rawValue) > 0){
+                roomID = "\(friendID)\(currentUserID)".toBase64()!
+                print(roomID ?? "Can not parse roomid")
+            }else{
+                roomID = "\(currentUserID)\(friendID)".toBase64()!
+                print(roomID ?? "Can not parse roomid")
+            }
+            idReceiver = selectedItem.id
+            //perform segue
+            performSegue(withIdentifier: Constants.BROWSE_TO_CHAT, sender: nil)
+    }
+  }
+    private func addFriend(selectedItem: UserObject){
+        DADataService.instance.addToFriendList(currentUserID: (mUserObj?.id)!, addedUserID: (selectedItem.id)!)
+    }
 }

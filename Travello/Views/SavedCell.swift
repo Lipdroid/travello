@@ -20,8 +20,13 @@ class SavedCell: UITableViewCell {
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var phone: UILabel!
-    
+    @IBOutlet weak var btn_chat: UIImageView!
+
+    var carcellDelegate: CarcellDelegate?
+    var carObject: CarObject?
+
     func updateViews(carObj: CarObject){
+        carObject = carObj
         fromAddress.text = carObj.origin
         toAddress.text = carObj.destination
         date.text = carObj.dates
@@ -49,7 +54,15 @@ class SavedCell: UITableViewCell {
         }
         
         phone.text = carObj.phone_no
-        
+        let btn_chat_tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didChatTapped(tapGestureRecognizer:)))
+        btn_chat.isUserInteractionEnabled = true
+        btn_chat.addGestureRecognizer(btn_chat_tapGestureRecognizer)
+
+    }
+    
+    @objc func didChatTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        carcellDelegate?.didChatTapped(id: (carObject?.id)!)
     }
 }
 

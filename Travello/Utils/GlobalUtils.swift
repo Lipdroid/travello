@@ -7,5 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public var ISFROM_CHAT: Bool = false
+var profile_imageCache: NSCache<NSString, UIImage> =  NSCache()
