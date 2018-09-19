@@ -284,18 +284,20 @@ class BrowseVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Carce
    
     func didChatTapped(id: String) {
         print(id)
-        if(friends.count>0){
-            DADataService.instance.getUserFromFirebaseDB(uid: id){
+        DADataService.instance.getUserFromFirebaseDB(uid: id){
                 (response) in
                 if let user = response as? UserObject{
                     self.selectedUser = user
-                    if(!self.friends.contains(id)){
+                    if(self.friends.count>0){
+                        if(!self.friends.contains(id)){
+                            self.addFriend(selectedItem: user)
+                        }
+                    }else{
                         self.addFriend(selectedItem: user)
                     }
                     self.getRoomIDAndPerformChatSegue(selectedItem: user)
                 }
             }
-        }
     }
     
 
